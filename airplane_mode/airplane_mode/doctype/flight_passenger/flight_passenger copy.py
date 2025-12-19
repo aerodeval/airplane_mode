@@ -6,8 +6,6 @@ from frappe.model.document import Document
 
 class FlightPassenger(Document):
 
-
 	def before_save(self):
-		first = self.first_name
-		last = self.last_name or ""
-		self.full_name = (first + " " + last).strip()
+		self.full_name = self.first_name + " " + self.last_name;	
+	pass
