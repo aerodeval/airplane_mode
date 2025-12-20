@@ -16,6 +16,7 @@ frappe.ui.form.on("Airplane Ticket", {
                 size: 'small', 
                 primary_action_label: 'Assign',
                 primary_action(values) {
+                    frm.set_value('seat', values.seat_number);
                     d.hide();
                 }
             });

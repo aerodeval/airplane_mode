@@ -1,11 +1,5 @@
 {
- "actions": [
-  {
-   "action": "apps/my_app/my_app/api.py",
-   "action_type": "Route",
-   "label": "Assign Seat"
-  }
- ],
+ "actions": [],
  "allow_rename": 1,
  "autoname": "format:{flight}-{MM}-{YYYY}-{#####}",
  "creation": "2025-12-17 15:01:46.761140",
@@ -171,7 +165,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-12-21 01:29:03.761144",
+ "modified": "2025-12-21 01:42:43.415529",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",

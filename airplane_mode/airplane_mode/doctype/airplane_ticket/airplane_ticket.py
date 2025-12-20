@@ -8,8 +8,8 @@ import random
 
 class AirplaneTicket(Document):
 
-	def before_insert(self):
-		self.generate_seat()
+	# def before_insert(self):
+	# 	self.generate_seat()
 	
 	def on_submit(self):
 		self.flight_status_check()
@@ -23,10 +23,10 @@ class AirplaneTicket(Document):
 
 
 	
-	def generate_seat(self):
-		number = random.randint(1, 100)
-		letter = random.choice(['A', 'B', 'C', 'D', 'E'])
-		self.seat = f"{number}{letter}"
+	# def generate_seat(self):
+	# 	number = random.randint(1, 100)
+	# 	letter = random.choice(['A', 'B', 'C', 'D', 'E'])
+	# 	self.seat = f"{number}{letter}"
 
 
 	def calc_total(self):
