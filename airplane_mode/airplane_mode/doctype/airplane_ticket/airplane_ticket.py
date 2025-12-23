@@ -8,9 +8,19 @@ import random
 
 class AirplaneTicket(Document):
 
-	# def before_insert(self):
-	# 	self.generate_seat()
-	
+	def before_insert(self):
+		airplane_brand= frappe.db.get_value("Airplane Flight", self.flight, "airplane")
+		capacity = frappe.db.get_value("Airplane", airplane_brand, "capacity")
+		ticket_count = frappe.db.count(
+			"Airplane Ticket",
+			{
+				"flight": self.flight
+			}
+		)
+
+		if ticket_count >=capacity:
+			frappe.throw("The number of tickets for that flight have exceeded, we're sorry.")
+				
 	def on_submit(self):
 		self.flight_status_check()
 
