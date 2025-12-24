@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from collections import defaultdict
+
 
 def execute(filters: dict | None = None):
 	"""Return columns and data for the report.
@@ -24,61 +24,53 @@ def execute(filters: dict | None = None):
 	# [{'name': 'Indigo-004', 'airline': 'Indigo'},
 	#  {'name': 'Air India-002', 'airline': 'Air India'}]
 
+	airlines = frappe.get_all("Airline", pluck=	"name")
+
+	#set 0 as intital revenue for all airline
+	airline_totals = {airline: 0 for airline in airlines}
 	airplanes = frappe.get_all("Airplane", fields=["name", "airline"])
-	airplane_map = {a['name']: a['airline'] for a in airplanes}
-	tickets = frappe.get_all("Airplane Ticket",filters={"docstatus": 1},fields=["total_amount", "flight.airplane"], order_by="total_amount DESC")
+	airplane_map = {a["name"]: a["airline"] for a in airplanes}
 
-
-
-	airline_totals = defaultdict(float)
+	tickets = frappe.get_all( "Airplane Ticket", filters={"docstatus": 1}, fields=["total_amount", "flight.airplane"])
 
 	for ticket in tickets:
-		flight_name = ticket.get("airplane")
-		amount = ticket.get("total_amount", 0)
-		airline = airplane_map.get(flight_name)
+		airplane = ticket.get("airplane")
+		airline = airplane_map.get(airplane)
+		#some test data is malformed
+		if not airline:
+			continue
+
+		airline_totals[airline] += ticket.get("total_amount") or 0
+
+	#for displaying table
+	data = []
+	for airline in airlines:
+		data.append([airline, airline_totals[airline]])
 		
-		if airline:
-			airline_totals[airline] += amount
-
-	#Converting the list of dicts
-	result = [{"airline": k, "total_amount": v} for k, v in airline_totals.items()]
-	data = [[x["airline"], x["total_amount"]] for x in result]
-
-	# new_data = {	
-	# 				{
-	# 					name: "Some Data", type: "bar",
-	# 					values: [25, 40, 30, 35, 8, 52, 17, -4]
-	# 				},
-	# 				{
-	# 					name: "Another Set", type: "line",
-	# 					values: [25, 50, -10, 15, 18, 32, 27, 14]
-	# 				}
-	# 		}
+	columns = get_columns()
 
 	chart = {
-		"data": {
-			"labels": [x["airline"] for x in result],
-			"datasets": [{"values": [x["total_amount"] for x in result]}]
-		},
-		"type": "donut"
+	"data": {
+		"labels": airlines,
+		"datasets": [{
+			"values": [airline_totals[a] for a in airlines]
+		}]
+	},
+	"type": "donut"
 	}
 
+	total_revenue = sum(airline_totals.values())
 
-	columns = get_columns()
-	# data_test=get_columns()
-	# print(data_test)
-	total_revenue = sum(x["total_amount"] for x in result)
-	report_summary = [
-    {
-        "value": total_revenue,
-        "indicator": "Green",
-        "label": "Total Revenue",
-        "datatype": "Currency",
-        "currency": "INR"
-    }
-]
+	report_summary = [{
+		"label": "Total Revenue",
+		"value": total_revenue,
+		"indicator": "Green",
+		"datatype": "Currency",
+		"currency": "INR"
+	}]
 
-	return columns,data, "Total Revenue", chart, report_summary
+
+	return columns, data, None, chart, report_summary
 
 def get_columns() -> list[dict]:
 	"""Return columns for the report.
@@ -90,11 +82,11 @@ def get_columns() -> list[dict]:
 			"label": _("Airline"),
 			"fieldname": "airline",
 			"fieldtype": "Link",
-			"options": "Airplane"
+			"options": "Airline"
 		},
 		{
 			"label": _("Revenue"),
-			"fieldname": "total_revenue",
+			"fieldname": "total_amount",
 			"fieldtype": "Currency",
 		},
 	]
