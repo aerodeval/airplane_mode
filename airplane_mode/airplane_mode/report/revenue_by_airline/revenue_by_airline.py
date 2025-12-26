@@ -101,3 +101,4 @@ def get_data() -> list[list]:
 		["Row 1", 1],
 		["Row 2", 2],
 	]
+
