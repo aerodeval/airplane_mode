@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_ng24",
+  "add_crew_members_column",
   "amended_from",
   "airplane",
   "date_of_departure",
@@ -18,6 +19,8 @@
   "destination_airport",
   "source_airport_code",
   "destination_airport_code",
+  "add_crew_members",
+  "gate",
   "route",
   "is_published"
  ],
@@ -107,6 +110,23 @@
    "fieldtype": "Check",
    "label": "Is Published?",
    "reqd": 1
+  },
+  {
+   "fieldname": "add_crew_members_column",
+   "fieldtype": "Column Break",
+   "label": "Add Crew Members"
+  },
+  {
+   "fieldname": "add_crew_members",
+   "fieldtype": "Table",
+   "label": "Add Crew Members",
+   "options": "Flight Crew"
+  },
+  {
+   "fieldname": "gate",
+   "fieldtype": "Data",
+   "label": "Gate",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
@@ -120,7 +140,7 @@
    "link_fieldname": "Flight"
   }
  ],
- "modified": "2025-12-23 14:58:02.083714",
+ "modified": "2025-12-26 12:52:36.611798",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

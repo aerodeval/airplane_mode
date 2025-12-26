@@ -69,7 +69,7 @@ def execute(filters: dict | None = None):
 		"currency": "INR"
 	}]
 
-
+ 
 	return columns, data, None, chart, report_summary
 
 def get_columns() -> list[dict]:
