@@ -13,9 +13,9 @@ IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
 
 
-class IntegrationTestPropertyDetails(IntegrationTestCase):
+class IntegrationTestShopManagementSettings(IntegrationTestCase):
 	"""
-	Integration tests for PropertyDetails.
+	Integration tests for ShopManagementSettings.
 	Use this class for testing interactions between multiple components.
 	"""
 

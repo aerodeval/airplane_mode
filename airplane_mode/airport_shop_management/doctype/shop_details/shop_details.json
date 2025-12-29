@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:shop_name",
+ "creation": "2025-12-26 16:33:02.564648",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tenant",
+  "shop_name",
+  "shop_number",
+  "airport",
+  "area",
+  "rent_amount",
+  "rent_end_date",
+  "status"
+ ],
+ "fields": [
+  {
+   "fetch_from": "tenant.shop_number",
+   "fieldname": "shop_number",
+   "fieldtype": "Data",
+   "label": "Shop Number"
+  },
+  {
+   "fetch_from": "tenant.shop_name",
+   "fieldname": "shop_name",
+   "fieldtype": "Data",
+   "label": "Shop Name",
+   "options": "Tenant Information",
+   "unique": 1
+  },
+  {
+   "fieldname": "airport",
+   "fieldtype": "Link",
+   "label": "Airport",
+   "options": "Airport"
+  },
+  {
+   "fetch_from": "tenant.area_in_sq_ft",
+   "fieldname": "area",
+   "fieldtype": "Data",
+   "label": "Area in Sq Ft"
+  },
+  {
+   "fetch_from": "rent_amount.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Contract Details"
+  },
+  {
+   "fetch_from": "tenant.rent_amount",
+   "fieldname": "rent_amount",
+   "fieldtype": "Data",
+   "label": "Rent Amount"
+  },
+  {
+   "fetch_from": "tenant.date_of_expiry",
+   "fieldname": "rent_end_date",
+   "fieldtype": "Date",
+   "label": "Rent End Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Available\nUnavailable\nMaintenance"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-29 11:42:47.350016",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Shop Details",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Red",
+   "title": "Unavailable"
+  },
+  {
+   "color": "Green",
+   "title": "Available"
+  },
+  {
+   "color": "Yellow",
+   "title": "Maintenance"
+  }
+ ]
+}
