@@ -150,13 +150,13 @@ scheduler_events = {
 	# "daily": [
 	# 	"airplane_mode.tasks.daily"
 	# ], 
-	"hourly": [
-		"airplane_mode.tasks.hourly"
-	],
-	"weekly": [
-		"airplane_mode.tasks.weekly"
-	],
-	"monthly": [
+	# "hourly": [
+	# 	"airplane_mode.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"airplane_mode.tasks.weekly"
+	# ],
+	"daily": [
 		"airplane_mode.tasks.monthly"
 	],
 }

@@ -8,8 +8,6 @@ from frappe.website.website_generator import WebsiteGenerator
 class AirplaneFlight(WebsiteGenerator):
 
 	def on_change(self):
-		
-		print("lol what is this")
 		frappe.enqueue(
 			method="airplane_mode.tasks.update_ticket_gate_numbers",
 			queue="long",
@@ -17,8 +15,8 @@ class AirplaneFlight(WebsiteGenerator):
 			new_gate=self.gate
 		)
 
-	def on_submit(self):
-		self.status = "Completed"
+	# def on_submit(self):
+	# 	self.status = "Completed"
 
 
 
