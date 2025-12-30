@@ -1,16 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{contract}-{payment_date}-{payment_status}",
+ "autoname": "prompt",
  "creation": "2025-12-29 11:19:13.660622",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "contract",
   "tenant",
+  "tenant_contact",
   "data_eite",
   "payment_date",
-  "amount_paid",
+  "amount",
   "payment_status"
  ],
  "fields": [
@@ -38,26 +39,35 @@
    "label": "Payment Date"
   },
   {
-   "fetch_from": "contract.rent_amount",
-   "fieldname": "amount_paid",
-   "fieldtype": "Currency",
-   "label": "Amount Paid"
-  },
-  {
    "fieldname": "payment_status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Payment Status",
-   "options": "Paid\nPending"
+   "options": "Pending\nPaid"
+  },
+  {
+   "fetch_from": "contract.contact",
+   "fieldname": "tenant_contact",
+   "fieldtype": "Data",
+   "label": "Tenant Contact",
+   "options": "Email"
+  },
+  {
+   "fetch_from": "contract.rent_amount",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-29 11:37:04.138470",
+ "modified": "2025-12-30 14:56:00.812982",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Rent Payment",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
   {
@@ -77,5 +87,14 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Green",
+   "title": "Paid"
+  },
+  {
+   "color": "Red",
+   "title": "Pending"
+  }
+ ]
 }

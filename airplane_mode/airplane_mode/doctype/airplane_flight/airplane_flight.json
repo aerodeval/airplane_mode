@@ -123,10 +123,10 @@
    "options": "Flight Crew"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "gate",
    "fieldtype": "Data",
-   "label": "Gate",
-   "reqd": 1
+   "label": "Gate"
   }
  ],
  "grid_page_length": 50,
@@ -140,7 +140,7 @@
    "link_fieldname": "Flight"
   }
  ],
- "modified": "2025-12-26 12:52:36.611798",
+ "modified": "2025-12-30 15:39:19.363473",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

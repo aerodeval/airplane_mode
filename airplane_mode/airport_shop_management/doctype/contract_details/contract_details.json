@@ -8,11 +8,12 @@
  "field_order": [
   "section_break_qtuh",
   "tenant",
-  "shop_number",
   "shop_name",
+  "shop_number",
   "rent_amount",
   "date_of_expiry",
-  "area_in_sq_ft"
+  "area_in_sq_ft",
+  "contact"
  ],
  "fields": [
   {
@@ -23,20 +24,26 @@
    "fetch_from": "shop_name.rent_amount",
    "fieldname": "rent_amount",
    "fieldtype": "Currency",
-   "label": "Rent Amount"
+   "in_list_view": 1,
+   "label": "Rent Amount",
+   "reqd": 1
   },
   {
    "fetch_from": "shop_name.rent_end_date",
    "fieldname": "date_of_expiry",
    "fieldtype": "Date",
-   "label": "Date of Expiry"
+   "in_list_view": 1,
+   "label": "Date of Expiry",
+   "reqd": 1
   },
   {
    "fetch_from": "shop_number.name1",
    "fieldname": "tenant",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Tenant",
-   "options": "Tenant Information"
+   "options": "Tenant Information",
+   "reqd": 1
   },
   {
    "fetch_from": "tenant.shop_number",
@@ -48,20 +55,30 @@
    "fetch_from": "tenant.shop_owned",
    "fieldname": "shop_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Shop Name",
    "options": "Shop Details",
+   "reqd": 1,
    "unique": 1
   },
   {
    "fieldname": "area_in_sq_ft",
    "fieldtype": "Data",
-   "label": "Area in Sq Ft."
+   "label": "Area in Sq Ft.",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "tenant.email",
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Contact",
+   "options": "Tenant Information"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-29 11:41:34.039438",
+ "modified": "2025-12-30 00:25:46.897676",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Contract Details",

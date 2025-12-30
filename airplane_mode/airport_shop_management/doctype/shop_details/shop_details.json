@@ -6,9 +6,10 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "tenant",
   "shop_name",
   "shop_number",
+  "shop_owner",
+  "shop_contact",
   "airport",
   "area",
   "rent_amount",
@@ -17,18 +18,16 @@
  ],
  "fields": [
   {
-   "fetch_from": "tenant.shop_number",
+   "fetch_from": "shop_name.shop_number",
    "fieldname": "shop_number",
    "fieldtype": "Data",
    "label": "Shop Number"
   },
   {
-   "fetch_from": "tenant.shop_name",
-   "fieldname": "shop_name",
+   "fetch_from": "shop_name.tenant",
+   "fieldname": "shop_owner",
    "fieldtype": "Data",
-   "label": "Shop Name",
-   "options": "Tenant Information",
-   "unique": 1
+   "label": "Shop Owner"
   },
   {
    "fieldname": "airport",
@@ -37,26 +36,19 @@
    "options": "Airport"
   },
   {
-   "fetch_from": "tenant.area_in_sq_ft",
+   "fetch_from": "shop_name.area_in_sq_ft",
    "fieldname": "area",
    "fieldtype": "Data",
    "label": "Area in Sq Ft"
   },
   {
-   "fetch_from": "rent_amount.tenant",
-   "fieldname": "tenant",
-   "fieldtype": "Link",
-   "label": "Tenant",
-   "options": "Contract Details"
-  },
-  {
-   "fetch_from": "tenant.rent_amount",
+   "fetch_from": "shop_name.rent_amount",
    "fieldname": "rent_amount",
    "fieldtype": "Data",
    "label": "Rent Amount"
   },
   {
-   "fetch_from": "tenant.date_of_expiry",
+   "fetch_from": "shop_name.date_of_expiry",
    "fieldname": "rent_end_date",
    "fieldtype": "Date",
    "label": "Rent End Date"
@@ -65,13 +57,27 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Available\nUnavailable\nMaintenance"
+   "options": "Occupied\nUnoccupied\nMaintenance"
+  },
+  {
+   "fetch_from": "rent_amount.tenant",
+   "fieldname": "shop_name",
+   "fieldtype": "Link",
+   "label": "Shop Name",
+   "options": "Contract Details",
+   "unique": 1
+  },
+  {
+   "fetch_from": "shop_name.contact",
+   "fieldname": "shop_contact",
+   "fieldtype": "Data",
+   "label": "Shop Contact"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-29 11:42:47.350016",
+ "modified": "2025-12-30 12:46:11.581116",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Shop Details",
@@ -98,11 +104,11 @@
  "states": [
   {
    "color": "Red",
-   "title": "Unavailable"
+   "title": "Unoccupied"
   },
   {
    "color": "Green",
-   "title": "Available"
+   "title": "Occupied"
   },
   {
    "color": "Yellow",
