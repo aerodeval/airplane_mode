@@ -66,6 +66,7 @@ def update_ticket_gate_numbers(flight_name, new_gate):
 
 
 def monthly_shop_check():
+    rent_reminder=frappe.get_doc("Shop Management Settings")
     current_date = getdate(today())
     current_month = current_date.month
     current_year = current_date.year
@@ -94,8 +95,9 @@ def monthly_shop_check():
         for rent in overdue_shop:
             rent_date = getdate(rent['payment_date'])
             if rent_date.month == prev_month and rent_date.year == prev_year:
-                send_rent_email(shop, rent)
-                
+                if rent_reminder:
+                    send_rent_email(shop, rent)
+
 
 def send_rent_email(shop, rent):
     frappe.sendmail(
