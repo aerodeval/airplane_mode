@@ -29,11 +29,11 @@
    "reqd": 1
   },
   {
-   "fetch_from": "shop_name.rent_end_date",
+   "fetch_from": "shop_name.rent_start_date",
    "fieldname": "date_of_expiry",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date of Expiry",
+   "label": "Rent Start",
    "reqd": 1
   },
   {
@@ -78,7 +78,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-30 00:25:46.897676",
+ "modified": "2025-12-30 22:26:14.172818",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Contract Details",

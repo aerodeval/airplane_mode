@@ -12,8 +12,8 @@
   "shop_contact",
   "airport",
   "area",
+  "rent_start_date",
   "rent_amount",
-  "rent_end_date",
   "status"
  ],
  "fields": [
@@ -48,12 +48,6 @@
    "label": "Rent Amount"
   },
   {
-   "fetch_from": "shop_name.date_of_expiry",
-   "fieldname": "rent_end_date",
-   "fieldtype": "Date",
-   "label": "Rent End Date"
-  },
-  {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -72,12 +66,18 @@
    "fieldname": "shop_contact",
    "fieldtype": "Data",
    "label": "Shop Contact"
+  },
+  {
+   "fetch_from": "shop_name.date_of_expiry",
+   "fieldname": "rent_start_date",
+   "fieldtype": "Date",
+   "label": "Rent Start Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-30 12:46:11.581116",
+ "modified": "2025-12-31 00:05:27.881418",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Shop Details",
