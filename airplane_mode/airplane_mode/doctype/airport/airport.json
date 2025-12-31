@@ -41,19 +41,19 @@
   },
   {
    "fieldname": "shop_capacity",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Shop Capacity"
   },
   {
    "fieldname": "shop_availibility",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Shop Availibility"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-29 12:41:55.801452",
+ "modified": "2025-12-31 11:13:34.943805",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airport",
