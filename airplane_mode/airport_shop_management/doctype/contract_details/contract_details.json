@@ -13,7 +13,8 @@
   "rent_amount",
   "date_of_expiry",
   "area_in_sq_ft",
-  "contact"
+  "contact",
+  "expiry_date"
  ],
  "fields": [
   {
@@ -73,12 +74,17 @@
    "fieldtype": "Data",
    "label": "Contact",
    "options": "Tenant Information"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Contract Expiry Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-30 22:26:14.172818",
+ "modified": "2026-01-01 21:47:44.058120",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Contract Details",
