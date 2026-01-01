@@ -10,9 +10,10 @@
   "tenant",
   "shop_name",
   "shop_number",
-  "rent_amount",
   "date_of_expiry",
   "area_in_sq_ft",
+  "column_break_nmlt",
+  "rent_amount",
   "contact",
   "expiry_date"
  ],
@@ -73,18 +74,24 @@
    "fieldname": "contact",
    "fieldtype": "Data",
    "label": "Contact",
-   "options": "Tenant Information"
+   "options": "Tenant Information",
+   "reqd": 1
   },
   {
    "fieldname": "expiry_date",
    "fieldtype": "Date",
-   "label": "Contract Expiry Date"
+   "label": "Contract Expiry Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_nmlt",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-01 21:47:44.058120",
+ "modified": "2026-01-01 22:44:43.478683",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Contract Details",

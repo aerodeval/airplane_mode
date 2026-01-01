@@ -10,13 +10,14 @@
   "shop_number",
   "shop_owner",
   "shop_contact",
-  "airport",
   "area",
+  "contract_expiry_date",
+  "column_break_fbfd",
+  "airport",
   "rent_start_date",
   "rent_amount",
-  "status",
   "shop_type",
-  "contract_expiry_date"
+  "status"
  ],
  "fields": [
   {
@@ -35,7 +36,8 @@
    "fieldname": "airport",
    "fieldtype": "Link",
    "label": "Airport",
-   "options": "Airport"
+   "options": "Airport",
+   "reqd": 1
   },
   {
    "fetch_from": "shop_name.area_in_sq_ft",
@@ -59,15 +61,19 @@
    "fetch_from": "rent_amount.tenant",
    "fieldname": "shop_name",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Shop Name",
    "options": "Contract Details",
+   "reqd": 1,
    "unique": 1
   },
   {
    "fetch_from": "shop_name.contact",
    "fieldname": "shop_contact",
    "fieldtype": "Data",
-   "label": "Shop Contact"
+   "in_list_view": 1,
+   "label": "Shop Contact",
+   "reqd": 1
   },
   {
    "fetch_from": "shop_name.date_of_expiry",
@@ -79,19 +85,24 @@
    "fieldname": "shop_type",
    "fieldtype": "Link",
    "label": "Shop Type",
-   "options": "Shop Type"
+   "options": "Shop Type",
+   "reqd": 1
   },
   {
    "fetch_from": "shop_name.expiry_date",
    "fieldname": "contract_expiry_date",
    "fieldtype": "Date",
    "label": "Contract Expiry Date"
+  },
+  {
+   "fieldname": "column_break_fbfd",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-01 21:57:50.661276",
+ "modified": "2026-01-01 22:45:45.051623",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Shop Details",
