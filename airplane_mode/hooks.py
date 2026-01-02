@@ -156,7 +156,7 @@ scheduler_events = {
 	# "weekly": [
 	# 	"airplane_mode.tasks.weekly"
 	# ],
-	"monthy": [
+	"monthly": [
 		"airplane_mode.tasks.monthly"
 	],
 }
