@@ -42,18 +42,20 @@
   {
    "fieldname": "shop_capacity",
    "fieldtype": "Int",
-   "label": "Shop Capacity"
+   "label": "Shop Capacity",
+   "read_only": 1
   },
   {
    "fieldname": "shop_availibility",
    "fieldtype": "Int",
-   "label": "Shop Availibility"
+   "label": "Shop Availibility",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-31 11:13:34.943805",
+ "modified": "2026-01-02 11:12:34.601907",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airport",
