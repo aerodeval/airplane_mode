@@ -38,7 +38,9 @@ class AirplaneTicket(Document):
 			"Airplane Ticket",
 			{
 				"flight": self.flight,
-				"seat":self.seat
+				"seat":self.seat,
+				"name": ["!=", self.name]
+
 
 			}
 			):
