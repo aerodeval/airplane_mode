@@ -15,14 +15,15 @@
   "time_of_departure",
   "duration",
   "status",
-  "source_airport",
-  "destination_airport",
-  "source_airport_code",
-  "destination_airport_code",
-  "add_crew_members",
   "gate",
+  "is_published",
   "route",
-  "is_published"
+  "column_break_lzbz",
+  "add_crew_members",
+  "source_airport",
+  "source_airport_code",
+  "destination_airport",
+  "destination_airport_code"
  ],
  "fields": [
   {
@@ -127,6 +128,10 @@
    "fieldname": "gate",
    "fieldtype": "Data",
    "label": "Gate"
+  },
+  {
+   "fieldname": "column_break_lzbz",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
@@ -140,7 +145,7 @@
    "link_fieldname": "Flight"
   }
  ],
- "modified": "2025-12-30 15:39:19.363473",
+ "modified": "2026-01-02 15:41:13.651030",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

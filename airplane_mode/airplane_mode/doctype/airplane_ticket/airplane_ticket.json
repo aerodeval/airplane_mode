@@ -75,7 +75,8 @@
    "fieldname": "flight",
    "fieldtype": "Link",
    "label": "Flight",
-   "options": "Airplane Flight"
+   "options": "Airplane Flight",
+   "reqd": 1
   },
   {
    "fieldname": "departure_date",
@@ -173,7 +174,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-12-26 12:53:52.116498",
+ "modified": "2026-01-05 17:01:30.586019",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
