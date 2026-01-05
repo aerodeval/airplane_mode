@@ -20,6 +20,7 @@ IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 FLIGHT = "Indigo-001-01-2026-00002"
 PASSENGER = "Miles Morales"
 ERROR_MSG="The number of tickets for that flight have exceeded, we're sorry."
+OCC_MSG="Seat 1A has already been booked for this flight"
 
 
 # def create_passenger():
@@ -32,6 +33,7 @@ ERROR_MSG="The number of tickets for that flight have exceeded, we're sorry."
 # 		}).insert(ignore_permissions=True)
 
 def create_ticket(seat):
+	print(frappe.session.user)
 	frappe.set_user("Administrator")
 	return frappe.get_doc({
 		"doctype": "Airplane Ticket",
@@ -118,18 +120,35 @@ class IntegrationTestAirplaneTicket(IntegrationTestCase):
 	Use this class for testing interactions between multiple components.
 	"""
 	def setUp(self):
-		frappe.set_user("Administrator")
+		
+		print("setting up new test")		
+		# print(frappe.session.user)
+		# frappe.set_user("Administrator")
 		# create_passenger()
 
-	def tearDown(self):
-		cleanup()
-		
+	def test_occupied_ticket(self):
+		print("ran test occupied ticket")
+		create_ticket("1A")
+		with self.assertRaises(frappe.exceptions.ValidationError) as exc:
+			create_ticket("1A")
+
+		self.assertIn(OCC_MSG, str(exc.exception))
+
+
+
 	def test_max_ticket_limit_on_flight(self):
+		print("ran test ticket limit exceed")
 
 		create_ticket("1A")
 		create_ticket("1B")
 		create_ticket("1C")
+		
 		with self.assertRaises(frappe.exceptions.ValidationError) as exc:
 			create_ticket("1D")
 
 		self.assertIn(ERROR_MSG, str(exc.exception))
+	
+	def tearDown(self):
+		print("cleaning out data")
+		cleanup()
+		
