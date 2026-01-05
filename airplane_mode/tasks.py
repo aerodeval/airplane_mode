@@ -80,6 +80,8 @@ def check_expired():
     for shop in expired_shops:
         frappe.delete_doc("Shop Details", shop.shop_name, force=True)
         frappe.delete_doc("Contract Details", shop.name, force=True)
+        send_email(shop , reminder_type="expiry")
+
 
 
 def monthly_shop_check():
@@ -175,6 +177,17 @@ def send_email(shop, rent, reminder_type):
                             The rent for the shop {shop.shop_name} for the month of {get_month(rent['payment_date'])} is still  unpaid.
                             to avoid further action please pay the rent
                     """
+                        )
+
+        case "expired":
+                      frappe.sendmail(
+                            recipients=[shop.shop_contact],
+                            subject=f"Rent Expired – {shop.shop_name}",
+                            message=f"""
+                            Hello,
+
+                            The contract for the shop {shop.shop_name} is expired due to missed payments in rents.
+                            Please contact support"""
                         )
 
                 
