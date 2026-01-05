@@ -26,11 +26,25 @@ class AirplaneTicket(Document):
 
 
 	def validate(self):
-		
 		self.total_amount = self.calc_total()
 		self.unique_add_on_check()
 		print(f"this is the status {self.status}")
 
+
+
+		#validation for not allowing same seat booking
+		if frappe.db.exists(
+
+			"Airplane Ticket",
+			{
+				"flight": self.flight,
+				"seat":self.seat
+
+			}
+			):
+			frappe.throw(
+                f"Seat {self.seat} has already been booked for this flight"
+			)	
 
 	
 	# def generate_seat(self):
